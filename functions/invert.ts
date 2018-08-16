@@ -1,8 +1,8 @@
 function invert(str: string): string {
     const arrStr: string[] = str.split('');
-    const words: string[][] = [];
-    const invertWords: (string | undefined)[][] = [];
+    let words: string[][] = [];
     let wordArray: string[] = [];
+    let resultStr: string = '';
 
     arrStr.forEach((e: string) => {
         if (e === ' ') {
@@ -16,27 +16,25 @@ function invert(str: string): string {
 
     words.push(wordArray);
 
-    words.forEach((word: string[]) => {
+    words = words.map((word: string[]) => {
         const letters: string[] = [];
 
         word.forEach((letter: string) => {
             if (!!(letter).match(/[a-z]/i)) {
-                letters.push(letter);
+                letters.push(letter as string);
             }
         });
 
-        invertWords.push(word.map((letter: string, key: number) => {
+        return word.map((letter: string) => {
             if (!!(letter).match(/[a-z]/i)) {
-                return letters.pop();
+                return letters.pop() as string;
             } else {
                 return letter;
             }
-        }));
+        });
     });
 
-    let resultStr: string = '';
-
-    invertWords.forEach((word: (string | undefined)[]) => {
+    words.forEach((word: string []) => {
         resultStr += word.join('');
     });
 

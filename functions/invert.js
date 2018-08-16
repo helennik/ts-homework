@@ -1,9 +1,9 @@
 "use strict";
 function invert(str) {
     const arrStr = str.split('');
-    const words = [];
-    const invertWords = [];
+    let words = [];
     let wordArray = [];
+    let resultStr = '';
     arrStr.forEach((e) => {
         if (e === ' ') {
             words.push(wordArray);
@@ -15,24 +15,23 @@ function invert(str) {
         }
     });
     words.push(wordArray);
-    words.forEach((word) => {
+    words = words.map((word) => {
         const letters = [];
         word.forEach((letter) => {
             if (!!(letter).match(/[a-z]/i)) {
                 letters.push(letter);
             }
         });
-        invertWords.push(word.map((letter, key) => {
+        return word.map((letter) => {
             if (!!(letter).match(/[a-z]/i)) {
                 return letters.pop();
             }
             else {
                 return letter;
             }
-        }));
+        });
     });
-    let resultStr = '';
-    invertWords.forEach((word) => {
+    words.forEach((word) => {
         resultStr += word.join('');
     });
     return resultStr;

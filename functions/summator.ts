@@ -1,6 +1,8 @@
-function summator(...elements: (number | string)[]): number {
+type NumberAndString = number | string;
+
+function summator(...elements: NumberAndString[]): number {
     let sum: number = 0;
-    elements.forEach((element: (number | string)) => {
+    elements.forEach((element: NumberAndString) => {
         sum += !isNaN(+element) ? +element : 0;
     });
 
