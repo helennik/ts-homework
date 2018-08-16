@@ -1,7 +1,5 @@
-function isInArray<T>(array: (T)[], ...elements: (T)[]): boolean {
-    return elements.every((element: T) => {
-        return !!~array.indexOf(element);
-    });
+function isInArray<T>(array: T[], ...elements: T[]): boolean {
+    return elements.every((element: T) => array.indexOf(element) !== -1);
 }
 
 

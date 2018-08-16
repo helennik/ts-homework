@@ -1,12 +1,6 @@
 "use strict";
-function isInArray(array) {
-    var elements = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        elements[_i - 1] = arguments[_i];
-    }
-    return elements.every(function (element) {
-        return !!~array.indexOf(element);
-    });
+function isInArray(array, ...elements) {
+    return elements.every((element) => array.indexOf(element) !== -1);
 }
 console.log(isInArray([1, 2], 2, 1));
 console.log(isInArray([1, 2], 2, 1, 3));
